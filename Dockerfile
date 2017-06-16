@@ -1,9 +1,10 @@
 FROM centos:7
 MAINTAINER Tim Dudgeon
 
-RUN yum -y update &&\
- yum -y install gcc gcc-c++ make cppunit cppunit-devel popt popt-devel curl &&\
- yum clean all
+RUN yum -y install epel-release && yum -y update &&\
+ yum -y install gcc gcc-c++ make cppunit cppunit-devel popt popt-devel curl zip unzip\
+ numpy python-configparser openbabel openbabel-devel python-openbabel python-pip &&\
+ yum clean all 
  
 ENV RBT_FILE rDock_2013.1_src 
 ENV RBT_ROOT /$RBT_FILE
