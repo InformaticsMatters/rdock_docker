@@ -12,18 +12,15 @@ ENV RBT_ROOT /$RBT_FILE
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$RBT_ROOT/lib
 ENV PATH $PATH:$RBT_ROOT/bin
 ENV JAVA_HOME /usr/lib/jvm/jre-openjdk/
+
+COPY rDock_2013.1_src /rDock_2013.1_src
+
+WORKDIR /rDock_2013.1_src/build
   
-# build rdock  
-RUN curl -kL -O -J https://sourceforge.net/projects/rdock/files/$RBT_FILE.tar.gz &&\
- tar -xvzf $RBT_FILE.tar.gz &&\
- rm $RBT_FILE.tar.gz &&\
- cd $RBT_FILE/build/ &&\
- make linux-g++-64 &&\
- make clean
+RUN cd $RBT_ROOT/build/ && make linux-g++-64 && make clean
  
 RUN useradd -m rdock
 USER rdock
-WORKDIR $RBT_ROOT 
 
 # get nextflow
 WORKDIR /home/rdock
