@@ -58,11 +58,12 @@ void RbtMdlFileSource::Parse() throw (RbtError)
       if (m_titleList.size() != nTitleRec)
 	throw RbtFileParseError(_WHERE_,"Incomplete title records in " + GetFileName());
 
+      // TD. 23 JUN 2017 - THIS CHECK FOR 3D IS DISABLED AS IT IS TOO FUSSY
       //1c DM 20 Dec 1999 - throw model error if record is 2D instead of 3D
       //DM 08 Aug 2000 - check for "3" at position 21 as well as "3D" at position 20
-      if ((m_titleList[1].find("3",21) != 21) && (m_titleList[1].find("3D",20) != 20)) {
-	throw RbtModelError(_WHERE_,"2D record in " + GetFileName());
-      }
+      //if ((m_titleList[1].find("3",21) != 21) && (m_titleList[1].find("3D",20) != 20)) {
+	//throw RbtModelError(_WHERE_,"2D record in " + GetFileName());
+      //}
 
       //////////////////////////////////////////////////////////
       //2. Read number of atoms and bonds
