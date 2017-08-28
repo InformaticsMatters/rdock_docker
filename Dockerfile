@@ -17,6 +17,6 @@ WORKDIR /rDock_2013.1_src/build
   
 RUN cd $RBT_ROOT/build/ && make linux-g++-64 && make clean
 
-RUN useradd -m rdock
-USER rdock
-WORKDIR /home/rdock
+#RUN useradd -m rdock
+#USER rdock
+#WORKDIR /home/rdock
