@@ -1,0 +1,13 @@
+FROM centos:7
+MAINTAINER Tim Dudgeon
+
+RUN yum -y install epel-release && yum -y update &&\
+ yum -y install gcc gcc-c++ make cppunit cppunit-devel popt popt-devel buildah &&\
+ yum clean all 
+
+COPY rDock_2013.1_src /rDock_2013.1_src
+ENV RDOCK_SRC=/rDock_2013.1_src
+
+WORKDIR /rDock_2013.1_src
+
+
