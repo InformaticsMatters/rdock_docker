@@ -29,8 +29,8 @@ These images are named `informaticsmatters/rdock-mini`.
 The general concept has been described in the [smaller containers](https://www.informaticsmatters.com/category/containers/index.html) series of posts
 on the [Informatics Matters blog](https://www.informaticsmatters.com/blog.html).
 
-These images contain only a minimal centos:7 operating system, a few standard Linux utilities (bash and the coreutils packages), the `popt` runtime library
-needed by rDock and Perl as rDock includes some Perl scripts. The result is an image that is only ~100MB in size, ~5x smaller than the kitchen sink image.
+These images contain only a minimal centos:7 operating system, a few standard Linux utilities (bash, procps-ng and the coreutils packages), the `popt` runtime library
+needed by rDock, and Perl (as rDock includes some Perl scripts). The result is an image that is only ~100MB in size, ~5x smaller than the kitchen sink image.
 
 To build this image:
 

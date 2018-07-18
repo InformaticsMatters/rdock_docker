@@ -7,3 +7,4 @@ docker run -it -v $PWD:$PWD:Z -v /var/lib/containers:/var/lib/containers --privi
 
 echo "Pushing to local Docker image"
 buildah push informaticsmatters/rdock-mini:latest docker-daemon:informaticsmatters/rdock-mini:latest
+echo "Created image informaticsmatters/rdock-mini:latest"

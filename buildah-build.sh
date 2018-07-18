@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 # build a centos image
 newcontainer=$(buildah from tdudgeon/centos-base:latest)
@@ -8,7 +8,7 @@ scratchmnt=$(buildah mount $newcontainer)
 echo "Creating container $newcontainer using $scratchmnt"
 
 # install the packages
-yum -y install popt perl\
+yum -y install popt perl gzip gunzip procps-ng\
   --installroot $scratchmnt --releasever 7\
   --setopt install_weak_deps=false --setopt=tsflags=nodocs\
   --setopt=override_install_langs=en_US.utf8 &&\
@@ -24,7 +24,7 @@ cd $RDOCK_SRC/build/
 make linux-g++-64
 
 mkdir $scratchmnt/$RDOCK_LOC
-cp -r $RDOCK_SRC/lib $RDOCK_SRC/bin $scratchmnt/$RDOCK_LOC
+cp -r $RDOCK_SRC/lib $RDOCK_SRC/bin $RDOCK_SRC/data $scratchmnt/$RDOCK_LOC
 
 # set some config info
 buildah config\
@@ -36,4 +36,4 @@ buildah config\
 
 # commit the image
 buildah unmount $newcontainer
-buildah commit $newcontainer informaticsmatters/rdock-mini
+buildah commit $newcontainer informaticsmatters/rdock-mini:latest
